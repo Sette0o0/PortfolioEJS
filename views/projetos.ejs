@@ -1,0 +1,14 @@
+<%- include('partials/header', { nome: estudante.nome }) %>
+<section>
+  <h2>Meus Projetos</h2>
+  <ul class="project-list">
+    <% projetos.forEach(p => { %>
+      <li class="project-card">
+        <h3><%= p.titulo %></h3>
+        <p><%= p.descricao %></p>
+        <a href="<%= p.link %>" target="_blank">Ver Projeto</a>
+      </li>
+    <% }) %>
+  </ul>
+</section>
+<%- include('partials/footer', { nome: estudante.nome }) %>

@@ -1,0 +1,16 @@
+<%- include('partials/header', { nome: estudante.nome }) %>
+<section>
+  <h2>Dashboard</h2>
+  <p><strong>Total de Disciplinas:</strong> <%= dados.totalDisciplinas %></p>
+  <p><strong>Total de Projetos:</strong> <%= dados.totalProjetos %></p>
+
+  <h3>Tecnologias mais usadas:</h3>
+  <ul class="card-list">
+    <% dados.tecnologias.forEach(t => { %>
+      <li class="card">
+        <strong><%= t.nome %></strong> — <%= t.qtd %> projeto(s)
+      </li>
+    <% }) %>
+  </ul>
+</section>
+<%- include('partials/footer', { nome: estudante.nome }) %>

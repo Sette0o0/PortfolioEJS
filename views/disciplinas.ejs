@@ -1,0 +1,10 @@
+<%- include('partials/header', { nome: estudante.nome }) %>
+<section>
+  <h2>Minhas Disciplinas</h2>
+  <ul class="card-list">
+    <% disciplinas.forEach(d => { %>
+      <li class="card"><%= d %></li>
+    <% }) %>
+  </ul>
+</section>
+<%- include('partials/footer', { nome: estudante.nome }) %>
