@@ -1,4 +1,5 @@
 const express = require("express");
+const methodOverride = require("method-override");
 const app = express();
 const port = 3000;
 const {
@@ -15,6 +16,7 @@ app.set("views", __dirname + "/views");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride("_method"));
 
 app.get("/", (req, res) => {
   res.render("index", { nome: estudante.nome });
@@ -34,7 +36,7 @@ app.post("/disciplinas", (req, res) => {
   res.redirect("/disciplinas");
 });
 
-app.post("/disciplinas/delete", (req, res) => {
+app.delete("/disciplinas/:index", (req, res) => {
   const { nome } = req.body;
   const index = disciplinas.indexOf(nome);
   if (index !== -1) disciplinas.splice(index, 1);
@@ -59,7 +61,7 @@ app.get("/projetos/editar/:index", (req, res) => {
   res.render("editarProjeto", { estudante, projeto, index, Tecnologias });
 });
 
-app.post("/projetos/editar/:index", (req, res) => {
+app.put("/projetos/:index", (req, res) => {
   const { index } = req.params;
   const { titulo, descricao, link, techs } = req.body;
   const techArray = Array.isArray(techs) ? techs : [techs];
@@ -67,10 +69,9 @@ app.post("/projetos/editar/:index", (req, res) => {
   res.redirect("/projetos");
 });
 
-app.post("/projetos/delete", (req, res) => {
-  const { titulo } = req.body;
-  const index = projetos.findIndex((p) => p.titulo === titulo);
-  if (index !== -1) projetos.splice(index, 1);
+app.delete("/projetos/:index", (req, res) => {
+  const { index } = req.params;
+  if (projetos[index]) projetos.splice(index, 1);
   res.redirect("/projetos");
 });
 

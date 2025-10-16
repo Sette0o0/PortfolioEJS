@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Sette0o0/PortfolioEJS#readme",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "method-override": "^3.0.0"
   }
 }

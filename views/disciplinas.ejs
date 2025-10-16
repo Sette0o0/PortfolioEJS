@@ -2,10 +2,10 @@
 <section>
   <h2>Minhas Disciplinas</h2>
   <ul class="card-list">
-    <% disciplinas.forEach(d => { %>
+    <% disciplinas.forEach((d, i) => { %>
       <li class="card">
         <%= d %>
-        <form method="POST" action="/disciplinas/delete" style="margin-top:8px;">
+        <form method="POST" action="/disciplinas/<%= i %>?_method=DELETE" style="margin-top:8px;">
           <input type="hidden" name="nome" value="<%= d %>">
           <button type="submit" class="excluir">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

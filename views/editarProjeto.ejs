@@ -3,7 +3,7 @@
 <section>
   <div class="add-form">
     <h2>Editar Projeto</h2>
-    <form method="POST" action="/projetos/editar/<%= index %>">
+    <form method="POST" action="/projetos/<%= index %>?_method=PUT">
       <input type="text" name="titulo" value="<%= projeto.titulo %>" required>
       <textarea type="text" name="descricao" required><%= projeto.descricao %></textarea>
       <input type="text" name="link" value="<%= projeto.link %>">
