@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -59,8 +65,14 @@ ul {
 
 .card-list, .project-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 15px;
+}
+
+.card{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .card, .project-card {
@@ -71,12 +83,25 @@ ul {
   transition: 0.3s;
 }
 
+.project-card{
+  display: flex;
+  flex-direction: column;
+}
+
 .card:hover, .project-card:hover {
   border-color: #00bcd4;
   transform: translateY(-4px);
 }
 
-.project-card a {
+.card form{
+  margin-left: auto;
+}
+
+.project-card form{
+  display: inline-block;
+}
+
+.btn-link {
   display: inline-block;
   color: #00bcd4;
   text-decoration: none;
@@ -100,6 +125,18 @@ ul {
   border-radius: 5px;
 }
 
+.add-form textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  margin: 8px 0;
+  background-color: #2a2a2a;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 5px;
+  resize: vertical;
+}
+
 .add-form button {
   background-color: #00bcd4;
   border: none;
@@ -108,6 +145,7 @@ ul {
   color: black;
   font-weight: bold;
   cursor: pointer;
+  margin-top: 16px;
 }
 
 .add-form button:hover {
@@ -120,4 +158,31 @@ footer {
   text-align: center;
   border-top: 2px solid #00bcd4;
   color: #888;
+}
+
+.actions{
+  margin-left: auto;
+  display: flex;
+}
+
+.excluir{
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: red;
+  border: 1px solid black;
+  padding: 6px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.btn-editar{
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: #008794;
+  border: 1px solid black;
+  padding: 6px;
+  border-radius: 7px;
 }

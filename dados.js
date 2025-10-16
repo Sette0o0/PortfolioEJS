@@ -1,4 +1,4 @@
-const Tecnologias = Object.freeze({
+export let Tecnologias = Object.freeze({
   node: "Node.js",
   express: "Express",
   ejs: "EJS",
@@ -20,7 +20,7 @@ export const estudante = {
   anoIngresso: 2025,
 };
 
-export const disciplinas = [
+export let disciplinas = [
   "Design Digital",
   "Desenvolvimento Web I",
   "Engenharia de Software I",
@@ -35,7 +35,7 @@ export const disciplinas = [
   "Técnica de Programação I",
 ]
 
-export const projetos = [
+export let projetos = [
   {
     titulo: "API1 1/2025 - Site para Análise de Exportação e Importação das Cidade do Estado de São Paulo",
     descricao: "Desenvolvemos uma plataforma web com dados sobre o desempenho dos municípios do Estado de São Paulo no comércio exterior, com base em informações públicas do Ministério do Desenvolvimento. A proposta é fornecer dados claros e acessíveis para auxiliar na tomada de decisões. Utilizamos pandas no Google Colab para tratar arquivos .csv e Flask para criar o site. O projeto superou desafios como o processamento de grandes volumes de dados e a integração entre análise e visualização.",
