@@ -13,7 +13,7 @@ export let Tecnologias = Object.freeze({
   typescript: "TypeScript",
 });
 
-export const estudante = {
+export let estudante = {
   nome: "Rafael Sette de Araujo",
   curso: "Desenvolvimento de Sistemas Multiplataforma",
   instituicao: "Fatec SJC Jessen Vidal",
@@ -50,7 +50,7 @@ export let projetos = [
   },
 ];
 
-export const contato = {
+export let contato = {
   email: "sette@examplo.com",
   telefone: "(11) 99999-9999",
 };

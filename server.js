@@ -2,13 +2,8 @@ const express = require("express");
 const methodOverride = require("method-override");
 const app = express();
 const port = 3000;
-const {
-  Tecnologias,
-  estudante,
-  disciplinas,
-  projetos,
-  contato,
-} = require("./dados");
+const apiRoutes = require("./api");
+const { estudante, disciplinas, projetos, Tecnologias, contato } = require("./dados");
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
@@ -17,6 +12,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride("_method"));
+
+app.use("/api", apiRoutes);
 
 app.get("/", (req, res) => {
   res.render("index", { nome: estudante.nome });
@@ -54,27 +51,6 @@ app.post("/projetos", (req, res) => {
   res.redirect("/projetos");
 });
 
-app.get("/projetos/editar/:index", (req, res) => {
-  const { index } = req.params;
-  const projeto = projetos[index];
-  if (!projeto) return res.status(404).send("Projeto não encontrado");
-  res.render("editarProjeto", { estudante, projeto, index, Tecnologias });
-});
-
-app.put("/projetos/:index", (req, res) => {
-  const { index } = req.params;
-  const { titulo, descricao, link, techs } = req.body;
-  const techArray = Array.isArray(techs) ? techs : [techs];
-  projetos[index] = { titulo, descricao, link, techs: techArray };
-  res.redirect("/projetos");
-});
-
-app.delete("/projetos/:index", (req, res) => {
-  const { index } = req.params;
-  if (projetos[index]) projetos.splice(index, 1);
-  res.redirect("/projetos");
-});
-
 app.get("/dashboard", (req, res) => {
   const totalDisciplinas = disciplinas.length;
   const totalProjetos = projetos.length;
@@ -90,7 +66,10 @@ app.get("/dashboard", (req, res) => {
     .sort((a, b) => b[1] - a[1])
     .map(([nome, qtd]) => ({ nome, qtd }));
 
-  res.render("dashboard", { dados: { totalDisciplinas, totalProjetos, tecnologias }, estudante });
+  res.render("dashboard", {
+    dados: { totalDisciplinas, totalProjetos, tecnologias },
+    estudante,
+  });
 });
 
 app.get("/contato", (req, res) => {
